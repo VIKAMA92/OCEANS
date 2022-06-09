@@ -3,6 +3,7 @@ package edu.stanford.bmir.protege.web.client.graphlib;
 import com.google.gwt.user.client.Window;
 import edu.stanford.bmir.protege.web.client.JSON;
 import edu.stanford.bmir.protege.web.client.dagre.Dagre;
+import edu.stanford.bmir.protege.web.client.d3.Layout;
 import edu.stanford.bmir.protege.web.shared.entity.OWLEntityData;
 import edu.stanford.bmir.protege.web.shared.viz.Edge;
 import jsinterop.annotations.*;
@@ -53,6 +54,11 @@ public class Graph {
     @JsOverlay
     public final void layout() {
         Dagre.get().layout(this);
+    }
+
+    @JsOverlay
+    public final void updateToNewGraph() {
+        // Layout.doAlert();
     }
 
     @JsOverlay

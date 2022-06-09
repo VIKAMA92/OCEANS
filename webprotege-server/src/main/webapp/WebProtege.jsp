@@ -40,7 +40,12 @@
     <script src="js/dagre/dagre.js"></script>
     <script src="js/polyfill/pathseg/pathseg.js"></script>
 
-    <script src="https://d3js.org/d3.v5.js"></script>
+    <script src="https://d3js.org/d3.v3.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/d3@3"></script>
+    <script src="https://cdn.jsdelivr.net/npm/d3-path@3"></script>
+    <script src="https://cdn.jsdelivr.net/npm/d3-shape@3"></script>
+
+    <script src="js/d3-force-layout/layout.js"></script>
 
     <script src="https://unpkg.com/popper.js@1.14.4/dist/umd/popper.js"></script>
     <script src="https://unpkg.com/tooltip.js@1.3.0/dist/umd/tooltip.js"></script>

@@ -1,5 +1,6 @@
 package edu.stanford.bmir.protege.web.client.graphlib;
 
+import edu.stanford.bmir.protege.web.client.d3.Layout;
 import edu.stanford.bmir.protege.web.client.tooltip.Tooltip;
 import edu.stanford.bmir.protege.web.client.ui.ElementalUtil;
 import edu.stanford.bmir.protege.web.client.viz.TextMeasurer;
@@ -185,21 +186,26 @@ public class Graph2Svg {
         defsElement.appendChild(openArrowHead);
         defsElement.appendChild(closedArrowHead);
 
+        int w = graph.getWidth();
+        int h = graph.getHeight();
+        
+        // Dagre graph
         Element groupElement = document.createElementNS(SVG_NS, "g");
         svg.appendChild(groupElement);
-
+        
         Element nodeGroupElement = document.createElementNS(SVG_NS, "g");
         nodeGroupElement.setAttribute(DATA_NODES, "");
         groupElement.appendChild(nodeGroupElement);
-
+        
         Element edgeGroupElement = document.createElementNS(SVG_NS, "g");
         edgeGroupElement.setAttribute(DATA_EDGES, "");
         groupElement.appendChild(edgeGroupElement);
-
-        int w = graph.getWidth();
-        int h = graph.getHeight();
+        
+       
         svg.setAttribute("viewbox", "0 0 " + w + " " + h);
         svg.setAttribute("preserveAspectRatio", "none");
+        
+        
         graph.getNodes()
                 .map(this::createNodeGroup)
                 .forEach(nodeGroupElement::appendChild);
@@ -208,6 +214,9 @@ public class Graph2Svg {
                     Element element = createEdgeGroup(edge);
                     edgeGroupElement.appendChild(element);
                 });
+
+        // D3 graph
+        Layout.generateGraph(graph.getNodes().toArray(), graph.getEdgeList().toArray(), w, h);
         return svg;
     }
 

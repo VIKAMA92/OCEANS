@@ -350,6 +350,7 @@ public class EntityGraphPresenter {
         Stopwatch stopwatch = Stopwatch.createStarted();
         currentGraph.layout();
         stopwatch.stop();
+        // currentGraph.updateToNewGraph();
         GWT.log("[VizPresenter] Laid out graph in " + stopwatch.elapsed(TimeUnit.MILLISECONDS) + " ms");
 
     }
